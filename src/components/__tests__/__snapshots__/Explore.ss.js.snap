@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Link changes the class when hovered 1`] = `
+<div>
+  <p>
+    Type a username or repo full name and hit 'Go':
+  </p>
+  <input
+    defaultValue="test"
+    onKeyUp={[Function]}
+    size="45"
+  />
+  <button
+    onClick={[Function]}
+  >
+    Go!
+  </button>
+  <p>
+    Code on 
+    <a
+      href="https://github.com/reactjs/redux"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      Github
+    </a>
+    .
+  </p>
+  <p>
+    Move the DevTools with Ctrl+W or hide them with Ctrl+H.
+  </p>
+</div>
+`;
