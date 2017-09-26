@@ -2,6 +2,13 @@
   "name": "real-world",
   "version": "0.0.1",
   "private": true,
+  "scripts": {
+    "start": "node scripts/start.js",
+    "build": "node scripts/build.js",
+    "test": "node scripts/test.js",
+    "lint": "eslint -c .eslintrc --fix ./src**/*.js",
+    "test:ci": "node scripts/test.js --testResultsProcessor ./node_modules/jest-junit"
+  },
   "devDependencies": {
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-es2015": "^6.24.1",
@@ -64,12 +71,6 @@
     "webpack-dev-server": "2.7.1",
     "webpack-manifest-plugin": "1.2.1",
     "whatwg-fetch": "2.0.3"
-  },
-  "scripts": {
-    "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
-    "test": "node scripts/test.js",
-    "test:ci": "node scripts/test.js --testResultsProcessor ./node_modules/jest-junit"
   },
   "jest": {
     "coverageReporters": ["lcov", "text"],
