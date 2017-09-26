@@ -7,7 +7,7 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
     "lint": "eslint -c .eslintrc --fix ./src**/*.js",
-    "test:ci": "node scripts/test.js --coverage"
+    "test:ci": "node scripts/test.js --testResultsProcessor ./node_modules/jest-junit  --coverage"
   },
   "devDependencies": {
     "babel-plugin-transform-class-properties": "^6.24.1",
