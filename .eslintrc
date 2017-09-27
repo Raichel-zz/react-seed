@@ -22,6 +22,7 @@
     }
   },
   "rules": {
+    "no-debugger": "off",
     "semi": "error",
     "no-console": "off",
     "strict": ["error", "global"],
