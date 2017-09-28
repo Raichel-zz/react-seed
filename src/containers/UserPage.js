@@ -4,16 +4,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { loadUser, loadStarred } from '../actions';
+import { loadUserPage, loadMoreStarred } from '../actions';
 import User from '../components/User';
 import Repo from '../components/Repo';
 import List from '../components/List';
 import zip from 'lodash/zip';
-
-const loadData = ({ login, loadUser, loadStarred }) => {
-  loadUser(login, [ 'name' ]);
-  loadStarred(login);
-};
 
 class UserPage extends Component {
   static propTypes = {
@@ -22,22 +17,22 @@ class UserPage extends Component {
     starredPagination: PropTypes.object,
     starredRepos: PropTypes.array.isRequired,
     starredRepoOwners: PropTypes.array.isRequired,
-    loadUser: PropTypes.func.isRequired,
-    loadStarred: PropTypes.func.isRequired
+    loadUserPage: PropTypes.func.isRequired,
+    loadMoreStarred: PropTypes.func.isRequired
   };
 
   componentWillMount() {
-    loadData(this.props);
+    this.props.loadUserPage(this.props.login);
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.login !== this.props.login) {
-      loadData(nextProps);
+    if (this.props.login !== nextProps.login) {
+      this.props.loadUserPage(nextProps.login);
     }
   }
 
   handleLoadMoreClick = () => {
-    this.props.loadStarred(this.props.login, true);
+    this.props.loadMoreStarred(this.props.login);
   }
 
   renderRepo([ repo, owner ]) {
@@ -94,6 +89,6 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 export default withRouter(connect(mapStateToProps, {
-  loadUser,
-  loadStarred
+  loadUserPage,
+  loadMoreStarred
 })(UserPage));

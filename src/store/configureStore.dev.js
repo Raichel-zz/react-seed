@@ -1,16 +1,18 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
-import api from '../middleware/api';
 import rootReducer from '../reducers';
 import DevTools from '../containers/DevTools';
+import createSagaMiddleware, { END } from 'redux-saga';
 
 const configureStore = preloadedState => {
+  const sagaMiddleware = createSagaMiddleware();
+
   const store = createStore(
     rootReducer,
     preloadedState,
     compose(
-      applyMiddleware(thunk, api, createLogger()),
+      applyMiddleware(thunk, sagaMiddleware, createLogger()),
       DevTools.instrument()
     )
   );
@@ -23,6 +25,8 @@ const configureStore = preloadedState => {
     });
   }
 
+  store.runSaga = sagaMiddleware.run;
+  store.close = () => store.dispatch(END);
   return store;
 };
 

@@ -22,8 +22,8 @@
     }
   },
   "rules": {
-    "no-debugger": "off",
     "semi": "error",
+    "no-debugger": "off",
     "no-console": "off",
     "strict": ["error", "global"],
     "no-case-declarations": "off",

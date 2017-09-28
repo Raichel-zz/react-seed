@@ -4,16 +4,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { loadRepo, loadStargazers } from '../actions';
+import { loadRepoPage, loadMoreStargazers } from '../actions';
 import Repo from '../components/Repo';
 import User from '../components/User';
 import List from '../components/List';
-
-const loadData = props => {
-  const { fullName } = props;
-  props.loadRepo(fullName, [ 'description' ]);
-  props.loadStargazers(fullName);
-};
 
 class RepoPage extends Component {
   static propTypes = {
@@ -23,22 +17,22 @@ class RepoPage extends Component {
     owner: PropTypes.object,
     stargazers: PropTypes.array.isRequired,
     stargazersPagination: PropTypes.object,
-    loadRepo: PropTypes.func.isRequired,
-    loadStargazers: PropTypes.func.isRequired
+    loadRepoPage: PropTypes.func.isRequired,
+    loadMoreStargazers: PropTypes.func.isRequired
   };
 
   componentWillMount() {
-    loadData(this.props);
+    this.props.loadRepoPage(this.props.fullName);
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.fullName !== this.props.fullName) {
-      loadData(nextProps);
+      this.props.loadRepoPage(nextProps.fullName);
     }
   }
 
-  handleLoadMoreClick = () => {
-    this.props.loadStargazers(this.props.fullName, true);
+  handleLoadMoreClick() {
+    this.props.loadMoreStargazers(this.props.fullName);
   }
 
   renderUser(user) {
@@ -93,6 +87,6 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 export default withRouter(connect(mapStateToProps, {
-  loadRepo,
-  loadStargazers
+  loadRepoPage,
+  loadMoreStargazers
 })(RepoPage));

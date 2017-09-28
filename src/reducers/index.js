@@ -30,17 +30,17 @@ const pagination = combineReducers({
   starredByUser: paginate({
     mapActionToKey: action => action.login,
     types: [
-      ActionTypes.STARRED_REQUEST,
-      ActionTypes.STARRED_SUCCESS,
-      ActionTypes.STARRED_FAILURE
+      ActionTypes.STARRED.REQUEST,
+      ActionTypes.STARRED.SUCCESS,
+      ActionTypes.STARRED.FAILURE
     ]
   }),
   stargazersByRepo: paginate({
     mapActionToKey: action => action.fullName,
     types: [
-      ActionTypes.STARGAZERS_REQUEST,
-      ActionTypes.STARGAZERS_SUCCESS,
-      ActionTypes.STARGAZERS_FAILURE
+      ActionTypes.STARGAZERS.REQUEST,
+      ActionTypes.STARGAZERS.SUCCESS,
+      ActionTypes.STARGAZERS.FAILURE
     ]
   })
 });
