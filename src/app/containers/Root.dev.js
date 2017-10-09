@@ -4,8 +4,8 @@ import { Provider } from 'react-redux';
 import DevTools from './DevTools';
 import { Route } from 'react-router-dom';
 import App from './App';
-import UserPage from './UserPage';
-import RepoPage from './RepoPage';
+import RepoPage from '../pages/repo';
+import UserPage from '../pages/user';
 
 const Root = ({ store }) => (
   <Provider store={store}>

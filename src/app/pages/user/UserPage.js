@@ -4,10 +4,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { loadUserPage, loadMoreStarred } from '../actions';
-import User from '../components/User';
-import Repo from '../components/Repo';
-import List from '../components/List';
+import { loadUserPage, loadMoreStarred } from '../../actions/index';
+import User from '../../components/User';
+import Repo from '../../components/Repo';
+import List from '../../components/List';
 import zip from 'lodash/zip';
 
 class UserPage extends Component {
