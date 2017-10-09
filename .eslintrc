@@ -26,6 +26,7 @@
     "no-debugger": "off",
     "no-console": "off",
     "strict": ["error", "global"],
+    "no-undef": "off",
     "no-case-declarations": "off",
     "no-unused-vars": "off",
     "react/prop-types": "off",

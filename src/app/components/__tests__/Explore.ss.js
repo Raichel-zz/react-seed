@@ -5,7 +5,7 @@ import renderer from 'react-test-renderer';
 
 test('Link changes the class when hovered', () => {
   const component = renderer.create(
-    <Explore value="test" onChange={() => {console.log("Yes")}}/>
+    <Explore value="test" onChange={() => {console.log("Yes");}}/>
   );
   let tree = component.toJSON();
   expect(tree).toMatchSnapshot();
