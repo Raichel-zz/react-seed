@@ -1,7 +1,7 @@
 import 'jsdom-global/register';
 import React from 'react';
 import { mount } from 'enzyme';
-import Explore from "../Explore";
+import Explore from "../explore";
 
 test('Explore changes the text after click', () => {
   // Render an explore comp

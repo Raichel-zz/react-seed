@@ -1,9 +1,9 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
-import Root from './containers/Root';
+import Root from './containers/root';
 import configureStore from './store/configureStore';
-import rootSaga from './sagas';
+import rootSaga from './sagas/index';
 
 const store = configureStore(window.__INITIAL_STATE__);
 store.runSaga(rootSaga);

@@ -4,10 +4,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { loadRepoPage, loadMoreStargazers } from '../../actions/index';
-import Repo from '../../components/Repo';
-import User from '../../components/User';
-import List from '../../components/List';
+import { loadRepoPage, loadMoreStargazers } from './actions';
+import Repo from '../components/repo';
+import User from '../components/user';
+import List from '../components/list';
 
 class RepoPage extends Component {
   static propTypes = {

@@ -1,14 +1,14 @@
 import * as ActionTypes from '../actions';
 import merge from 'lodash/merge';
-import paginate from './paginate';
 import { combineReducers } from 'redux';
+import starredByUser from '../pages/user/reducers';
+import stargazersByRepo from '../pages/repo/reducers';
 
 // Updates an entity cache in response to any action with response.entities.
 const entities = (state = { users: {}, repos: {} }, action) => {
   if (action.response && action.response.entities) {
     return merge({}, state, action.response.entities);
   }
-
   return state;
 };
 
@@ -25,24 +25,9 @@ const errorMessage = (state = null, action) => {
   return state;
 };
 
-// Updates the pagination data for different actions.
 const pagination = combineReducers({
-  starredByUser: paginate({
-    mapActionToKey: action => action.login,
-    types: [
-      ActionTypes.STARRED.REQUEST,
-      ActionTypes.STARRED.SUCCESS,
-      ActionTypes.STARRED.FAILURE
-    ]
-  }),
-  stargazersByRepo: paginate({
-    mapActionToKey: action => action.fullName,
-    types: [
-      ActionTypes.STARGAZERS.REQUEST,
-      ActionTypes.STARGAZERS.SUCCESS,
-      ActionTypes.STARGAZERS.FAILURE
-    ]
-  })
+  starredByUser,
+  stargazersByRepo,
 });
 
 const rootReducer = combineReducers({

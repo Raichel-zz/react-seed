@@ -4,8 +4,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import Explore from '../components/Explore';
-import { resetErrorMessage } from '../actions';
+import Explore from './components/explore';
+import { resetErrorMessage } from '../actions/index';
 
 class App extends Component {
   static propTypes = {

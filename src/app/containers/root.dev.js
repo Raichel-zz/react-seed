@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
-import DevTools from './DevTools';
+import DevTools from './devtools';
 import { Route } from 'react-router-dom';
-import App from './App';
+import App from '../pages/app';
 import RepoPage from '../pages/repo';
 import UserPage from '../pages/user';
 

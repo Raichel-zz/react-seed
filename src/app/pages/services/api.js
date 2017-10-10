@@ -3,7 +3,7 @@ import { camelizeKeys } from 'humps';
 import 'isomorphic-fetch';
 
 // Extracts the next page URL from Github API response.
-function getNextPageUrl(response) {
+const getNextPageUrl = (response) => {
   const link = response.headers.get('link');
   if (!link) {
     return null;
@@ -15,13 +15,13 @@ function getNextPageUrl(response) {
   }
 
   return nextLink.split(';')[0].slice(1, -1);
-}
+};
 
 const API_ROOT = 'https://api.github.com/';
 
 // Fetches an API response and normalizes the result JSON according to schema.
 // This makes every API response have the same shape, regardless of how nested it was.
-function callApi(endpoint, schema) {
+export const callApi = (endpoint, schema) => {
   const fullUrl = (endpoint.indexOf(API_ROOT) === -1) ? API_ROOT + endpoint : endpoint;
   return fetch(fullUrl)
       .then(response =>
@@ -43,8 +43,7 @@ function callApi(endpoint, schema) {
           response => ({response}),
           error => ({error: error.message || 'Something bad happened'})
       );
-}
-
+};
 
 // We use this Normalizr schemas to transform API responses from a nested form
 // to a flat form where repos and users are placed in `entities`, and nested
@@ -59,21 +58,15 @@ function callApi(endpoint, schema) {
 // leading to a frozen UI as it wouldn't find "someuser" in the entities.
 // That's why we're forcing lower cases down there.
 
-const userSchema = new schema.Entity('users', {}, {
+export const userSchema = new schema.Entity('users', {}, {
   idAttribute: user => user.login.toLowerCase()
 });
 
-const repoSchema = new schema.Entity('repos', {
+export const repoSchema = new schema.Entity('repos', {
   owner: userSchema
 }, {
   idAttribute: repo => repo.fullName.toLowerCase()
 });
 
-const userSchemaArray = [userSchema];
-const repoSchemaArray = [repoSchema];
-
-// api services
-export const fetchUser = login => callApi(`users/${login}`, userSchema);
-export const fetchRepo = fullName => callApi(`repos/${fullName}`, repoSchema);
-export const fetchStarred = url => callApi(url, repoSchemaArray);
-export const fetchStargazers = url => callApi(url, userSchemaArray);
+export const userSchemaArray = [userSchema];
+export const repoSchemaArray = [repoSchema];
