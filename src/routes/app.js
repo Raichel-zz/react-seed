@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Explore from './components/explore';
 import { resetErrorMessage } from '../actions/index';
+import { Button } from 'react-bootstrap';
 
 class App extends Component {
   static propTypes = {
@@ -36,9 +37,9 @@ class App extends Component {
       <p style={{ backgroundColor: '#e99', padding: 10 }}>
         <b>{errorMessage}</b>
         {' '}
-        <button onClick={this.handleDismissClick}>
+        <Button onClick={this.handleDismissClick}>
           Dismiss
-        </button>
+        </Button>
       </p>
     );
   }

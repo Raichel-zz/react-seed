@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Button, FormControl, FormGroup, Col, Row, Panel } from 'react-bootstrap';
 
 const GITHUB_REPO = 'https://github.com/reactjs/redux';
 
@@ -40,22 +41,34 @@ export default class Explore extends Component {
 
   render() {
     return (
-      <div>
-        <p>Type a username or repo full name and hit 'Go':</p>
-        <input size="45"
-          ref={(input) => this.input = input}
-          defaultValue={this.props.value}
-          onKeyUp={this.handleKeyUp} />
-        <button onClick={this.handleGoClick}>
-          Go!
-        </button>
-        <p>
-          Code on <a href={GITHUB_REPO} target="_blank" rel="noopener noreferrer">Github</a>.
-        </p>
-        <p>
-          Move the DevTools with Ctrl+W or hide them with Ctrl+H.
-        </p>
-      </div>
+      <Panel header={"Type a username or repo full name and hit 'Go':"}>
+        <Row>
+          <FormGroup>
+            <Col sm={3}>
+              <FormControl
+                ref={(input) => this.input = input}
+                defaultValue={this.props.value}
+                onKeyUp={this.handleKeyUp} >
+              </FormControl>
+            </Col>
+            <Col sm={4}>
+              <Button className={"btn-primary"} onClick={this.handleGoClick}>
+                Go!
+              </Button>
+            </Col>
+          </FormGroup>
+        </Row>
+        <Row>
+          <Col sm={12}>
+            <p>
+              Code on <a href={GITHUB_REPO} target="_blank" rel="noopener noreferrer">Github</a>.
+            </p>
+            <p>
+              Move the DevTools with Ctrl+W or hide them with Ctrl+H.
+            </p>
+          </Col>
+        </Row>
+      </Panel>
     );
   }
 }
