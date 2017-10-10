@@ -8,7 +8,7 @@ import { getUser, getStarredByUser } from './selectors';
 const { user, starred } = actions;
 
 // url for first page
-// urls for next pages will be extracted from the successive loadMore* requests
+// urls for next routes will be extracted from the successive loadMore* requests
 const firstPageStarredUrl = login => `users/${login}/starred`;
 
 /***************************** Subroutines ************************************/

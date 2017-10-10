@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import DevTools from './devtools';
 import { Route } from 'react-router-dom';
-import App from '../pages/app';
-import RepoPage from '../pages/repo';
-import UserPage from '../pages/user';
+import App from '../routes/app';
+import RepoPage from '../routes/repo';
+import UserPage from '../routes/user';
 
 const Root = ({ store }) => (
   <Provider store={store}>

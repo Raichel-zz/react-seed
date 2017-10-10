@@ -8,7 +8,7 @@ import { getRepo, getStargazersByRepo } from './selectors';
 const { repo, stargazers } = actions;
 
 // url for first page
-// urls for next pages will be extracted from the successive loadMore* requests
+// urls for next routes will be extracted from the successive loadMore* requests
 const firstPageStargazersUrl = fullName => `repos/${fullName}/stargazers`;
 
 

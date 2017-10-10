@@ -1,8 +1,8 @@
 import * as ActionTypes from '../actions';
 import merge from 'lodash/merge';
 import { combineReducers } from 'redux';
-import starredByUser from '../pages/user/reducers';
-import stargazersByRepo from '../pages/repo/reducers';
+import starredByUser from '../routes/user/reducers';
+import stargazersByRepo from '../routes/repo/reducers';
 
 // Updates an entity cache in response to any action with response.entities.
 const entities = (state = { users: {}, repos: {} }, action) => {

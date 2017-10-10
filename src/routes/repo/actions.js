@@ -1,4 +1,4 @@
-import { action } from 'app/actions';
+import { action } from 'actions';
 
 const REQUEST = 'REQUEST';
 const SUCCESS = 'SUCCESS';
