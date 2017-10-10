@@ -15,5 +15,4 @@ test('Explore changes the text after click', () => {
   explore.find('input').node.value = "blah blah";
   explore.find('button').simulate('click');
 
-
 });
