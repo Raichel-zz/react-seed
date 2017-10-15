@@ -5,7 +5,7 @@ const Header = () => (
 
     <header className={"main-header"}>
       {/* Logo */}
-      <a href="http://www.pipl.com" className={"logo"}>
+      <a href="https://pipl.com" className={"logo"}>
         {/* mini logo for sidebar mini 50x50 pixels */}
         <span className={"logo-mini"}><b>P</b>B</span>
         {/* logo for regular state and mobile devices */}
