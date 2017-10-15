@@ -1,6 +1,6 @@
 import React from 'react';
 import Bundle from '../../utils/bundle';
-import UserPage from 'bundle-loader?lazy!./userpage';
+import UserPage from 'bundle-loader?lazy!./containers';
 
 const UserBundle = () => {
   return <Bundle load={UserPage}>

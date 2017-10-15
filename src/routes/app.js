@@ -7,6 +7,7 @@ import { withRouter } from 'react-router-dom';
 import Explore from './components/explore';
 import { resetErrorMessage } from '../actions/index';
 import { Button } from 'react-bootstrap';
+import Header from './components/header';
 
 class App extends Component {
   static propTypes = {
@@ -47,11 +48,15 @@ class App extends Component {
   render() {
     const { children, inputValue } = this.props;
     return (
-      <div>
-        <Explore value={inputValue} onChange={this.handleChange} />
-        <hr />
-        {this.renderErrorMessage()}
-        {children}
+      <div className={"wrapper"}>
+        <Header />
+        <div className="sidebar-wrapper"></div>
+        <div className="content-wrapper">
+          <Explore value={inputValue} onChange={this.handleChange} />
+          <hr />
+          {this.renderErrorMessage()}
+          {children}
+        </div>
       </div>
     );
   }
