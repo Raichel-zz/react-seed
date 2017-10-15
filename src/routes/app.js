@@ -49,7 +49,7 @@ class App extends Component {
     const { children, inputValue } = this.props;
     return (
       <div className={"wrapper"}>
-        <Header />
+        <Header/>
         <div className="sidebar-wrapper"></div>
         <div className="content-wrapper">
           <Explore value={inputValue} onChange={this.handleChange} />
