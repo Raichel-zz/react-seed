@@ -25,7 +25,6 @@ export const callApi = (endpoint, schema) => {
     headers: {}
   };
   req = setCSRFToken(req);
-  debugger;
   return fetch(fullUrl, req)
     .then(response =>
         response.json().then(json => ({ json, response }))
