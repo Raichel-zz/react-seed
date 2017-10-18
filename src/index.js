@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Root from './containers/root';
 import configureStore from './store/configureStore';
-import rootSaga from './sagas/index';
+import rootSaga from './sagas';
 
 const store = configureStore(window.__INITIAL_STATE__);
 store.runSaga(rootSaga);

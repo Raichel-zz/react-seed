@@ -1,5 +1,4 @@
-import { callApi, userSchema, repoSchemaArray } from '../services/api';
+import { callApi, userSchema } from '../api';
 
 // api services
-export const fetchUser = login => callApi(`users/${login}`, userSchema);
-export const fetchStarred = url => callApi(url, repoSchemaArray);
+export const fetchUser = () => callApi(`current_user/`, userSchema);

@@ -11,8 +11,8 @@ const Root = ({ store }) => (
   <Provider store={store}>
     <div>
       <Route path="/" component={App} />
-      <Route path="/:login/:name" component={RepoPage} />
-      <Route path="/:login" component={UserPage} />
+      {/*<Route path="/:login/:name" component={RepoPage} />*/}
+      {/*<Route path="/:login" component={UserPage} />*/}
       <DevTools />
     </div>
   </Provider>

@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-const Header = () => (
+export default class Header extends Component {
 
-    <header className={"main-header"}>
+  static propTypes = {
+    username: PropTypes.string
+  };
+
+  render() {
+    return  (<header className={"main-header"}>
       {/* Logo */}
       <a href="https://pipl.com" className={"logo"}>
         {/* mini logo for sidebar mini 50x50 pixels */}
@@ -38,7 +43,8 @@ const Header = () => (
                       <a href="#">
                         <div className={"pull-left"}>
                           {/*<!-- User Image -->*/}
-                          <img src="https://almsaeedstudio.com/themes/AdminLTE/dist/img/user2-160x160.jpg" className={"img-circle"} alt="User Image"/>
+                          <img src="https://almsaeedstudio.com/themes/AdminLTE/dist/img/user2-160x160.jpg"
+                               className={"img-circle"} alt="User Image"/>
                         </div>
                         {/*<!-- Message title and timestamp -->*/}
                         <h4>
@@ -105,7 +111,8 @@ const Header = () => (
                         {/*<!-- The progress bar -->*/}
                         <div className={"progress xs"}>
                           {/*<!-- Change the css width attribute to simulate progress -->*/}
-                          <div className={"progress-bar progress-bar-aqua"} style={{width: '20%'}} role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                          <div className={"progress-bar progress-bar-aqua"} style={{width: '20%'}} role="progressbar"
+                               aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
                             <span className={"sr-only"}>20% Complete</span>
                           </div>
                         </div>
@@ -124,14 +131,16 @@ const Header = () => (
               {/*<!-- Menu Toggle Button -->*/}
               <a href="#" className={"dropdown-toggle"} data-toggle="dropdown">
                 {/*<!-- The user image in the navbar-->*/}
-                <img src="https://almsaeedstudio.com/themes/AdminLTE/dist/img/user2-160x160.jpg" className={"user-image"} alt="User Image"/>
+                <img src="https://almsaeedstudio.com/themes/AdminLTE/dist/img/user2-160x160.jpg"
+                     className={"user-image"} alt="User Image"/>
                 {/*<!-- hidden-xs hides the username on small devices so only the image appears. -->*/}
-                <span className={"hidden-xs"}>Alexander Pierce</span>
+                <span className={"hidden-xs"}>{this.props.username}</span>
               </a>
               <ul className={"dropdown-menu"}>
                 {/*<!-- The user image in the menu -->*/}
                 <li className={"user-header"}>
-                  <img src="https://almsaeedstudio.com/themes/AdminLTE/dist/img/user2-160x160.jpg" className={"img-circle"} alt="User Image"/>
+                  <img src="https://almsaeedstudio.com/themes/AdminLTE/dist/img/user2-160x160.jpg"
+                       className={"img-circle"} alt="User Image"/>
 
                   <p>
                     Alexander Pierce - Web Developer
@@ -171,11 +180,6 @@ const Header = () => (
           </ul>
         </div>
       </nav>
-    </header>
-);
-
-Header.propTypes = {
-  // store: PropTypes.object.isRequired,
-};
-
-export default Header;
+    </header>);
+  }
+}

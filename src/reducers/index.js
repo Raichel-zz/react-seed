@@ -1,16 +1,16 @@
 import * as ActionTypes from '../actions';
 import merge from 'lodash/merge';
 import { combineReducers } from 'redux';
-import starredByUser from '../routes/user/reducers';
-import stargazersByRepo from '../routes/repo/reducers';
+import { currentUser } from '../routes/user/reducers';
+// import stargazersByRepo from '../routes/repo/reducers';
 
 // Updates an entity cache in response to any action with response.entities.
-const entities = (state = { users: {}, repos: {} }, action) => {
-  if (action.response && action.response.entities) {
-    return merge({}, state, action.response.entities);
-  }
-  return state;
-};
+// const entities = (state = { users: {}, repos: {} }, action) => {
+//   if (action.response && action.response.entities) {
+//     return merge({}, state, action.response.entities);
+//   }
+//   return state;
+// };
 
 // Updates error message to notify about the failed fetches.
 const errorMessage = (state = null, action) => {
@@ -25,15 +25,15 @@ const errorMessage = (state = null, action) => {
   return state;
 };
 
-const pagination = combineReducers({
-  starredByUser,
-  stargazersByRepo,
-});
+// const pagination = combineReducers({
+//   stargazersByRepo,
+// });
 
 const rootReducer = combineReducers({
-  entities,
-  pagination,
+  // entities,
+  // pagination,
   errorMessage,
+  currentUser
 });
 
 export default rootReducer;

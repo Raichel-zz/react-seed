@@ -1,5 +1,5 @@
 import * as ActionTypes from './actions';
-import paginate from 'reducers/paginate';
+import { paginate } from '../../reducers/paginate';
 
 // Updates the pagination data for different actions.
 const pagination = paginate({

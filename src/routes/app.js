@@ -5,19 +5,29 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Explore from './components/explore';
-import { resetErrorMessage } from '../actions/index';
+import { resetErrorMessage } from '../actions';
+import { loadCurrentUser } from './user/actions';
 import { Button } from 'react-bootstrap';
 import Header from './components/header';
+import {currentUser} from "./user/reducers";
 
 class App extends Component {
   static propTypes = {
     // Injected by React Redux
+    currentUser: PropTypes.object,
     errorMessage: PropTypes.string,
     resetErrorMessage: PropTypes.func.isRequired,
     inputValue: PropTypes.string.isRequired,
+    loadCurrentUser: PropTypes.func.isRequired,
     // Injected by React Router
     children: PropTypes.node
   };
+
+  component
+
+  componentWillMount() {
+    this.props.loadCurrentUser();
+  }
 
   handleDismissClick = e => {
     this.props.resetErrorMessage();
@@ -46,10 +56,15 @@ class App extends Component {
   }
 
   render() {
+    if(!this.props.currentUser) {
+      return (<div/>);
+    }
     const { children, inputValue } = this.props;
+    debugger;
+    const { firstName, lastName } = this.props.currentUser;
     return (
       <div className={"wrapper"}>
-        <Header/>
+        <Header username={`${firstName} ${lastName}`}/>
         <div className="sidebar-wrapper"></div>
         <div className="content-wrapper">
           <Explore value={inputValue} onChange={this.handleChange} />
@@ -63,10 +78,12 @@ class App extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
+  currentUser: state.currentUser,
   errorMessage: state.errorMessage,
   inputValue: ownProps.location.pathname.substring(1)
 });
 
 export default withRouter(connect(mapStateToProps, {
+  loadCurrentUser,
   resetErrorMessage
 })(App));

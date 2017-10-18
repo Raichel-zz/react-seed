@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { loadUserPage, loadMoreStarred } from './actions';
+import { loadCurrentUser, loadMoreStarred } from './actions';
 import User from '../components/user';
 import Repo from '../components/repo';
 import List from '../components/list';
@@ -17,25 +17,19 @@ class UserPage extends Component {
     starredPagination: PropTypes.object,
     starredRepos: PropTypes.array.isRequired,
     starredRepoOwners: PropTypes.array.isRequired,
-    loadUserPage: PropTypes.func.isRequired,
+    loadCurrentUser: PropTypes.func.isRequired,
     loadMoreStarred: PropTypes.func.isRequired
   };
 
-  componentWillMount() {
-    this.props.loadUserPage(this.props.login);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (this.props.login !== nextProps.login) {
-      this.props.loadUserPage(nextProps.login);
-    }
+  componentWillMount = () => {
+    this.props.loadCurrentUser();
   }
 
   handleLoadMoreClick = () => {
     this.props.loadMoreStarred(this.props.login);
-  }
+  };
 
-  renderRepo([ repo, owner ]) {
+  renderRepo = ([ repo, owner ]) => {
     return (
       <Repo
         repo={repo}
@@ -89,6 +83,6 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 export default withRouter(connect(mapStateToProps, {
-  loadUserPage,
+  loadCurrentUser,
   loadMoreStarred
 })(UserPage));
