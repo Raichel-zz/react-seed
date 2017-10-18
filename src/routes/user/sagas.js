@@ -22,7 +22,7 @@ function* loadCurrentUser() {
 /******************************* WATCHERS *************************************/
 /******************************************************************************/
 
-// Fetches data for a User : user data + starred repos
+// Fetches data for current logged in User
 function* watchLoadCurrentUser() {
   while(true) {
     yield take(actions.LOAD_CURRENT_USER);

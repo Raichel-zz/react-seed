@@ -9,7 +9,6 @@ import { resetErrorMessage } from '../actions';
 import { loadCurrentUser } from './user/actions';
 import { Button } from 'react-bootstrap';
 import Header from './components/header';
-import {currentUser} from "./user/reducers";
 
 class App extends Component {
   static propTypes = {
@@ -22,8 +21,6 @@ class App extends Component {
     // Injected by React Router
     children: PropTypes.node
   };
-
-  component
 
   componentWillMount() {
     this.props.loadCurrentUser();
@@ -60,7 +57,6 @@ class App extends Component {
       return (<div/>);
     }
     const { children, inputValue } = this.props;
-    debugger;
     const { firstName, lastName } = this.props.currentUser;
     return (
       <div className={"wrapper"}>

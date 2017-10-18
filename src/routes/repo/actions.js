@@ -1,15 +1,4 @@
-import { action } from 'actions';
-
-const REQUEST = 'REQUEST';
-const SUCCESS = 'SUCCESS';
-const FAILURE = 'FAILURE';
-
-function createRequestTypes(base) {
-  return [REQUEST, SUCCESS, FAILURE].reduce((acc, type) => {
-    acc[type] = `${base}_${type}`;
-    return acc;
-  }, {});
-}
+import { action, SUCCESS, REQUEST, FAILURE, createRequestTypes} from '../../actions';
 
 export const REPO = createRequestTypes('REPO');
 export const STARGAZERS = createRequestTypes('STARGAZER');
