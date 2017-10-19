@@ -2,6 +2,7 @@ import * as ActionTypes from '../actions';
 import merge from 'lodash/merge';
 import { combineReducers } from 'redux';
 import { currentUser } from '../routes/user/reducers';
+import { insights } from '../routes/insights/reducers';
 // import stargazersByRepo from '../routes/repo/reducers';
 
 // Updates an entity cache in response to any action with response.entities.
@@ -33,7 +34,8 @@ const rootReducer = combineReducers({
   // entities,
   // pagination,
   errorMessage,
-  currentUser
+  currentUser,
+  insights
 });
 
 export default rootReducer;

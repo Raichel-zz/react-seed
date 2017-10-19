@@ -5,10 +5,13 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Explore from './components/explore';
+import { Route } from 'react-router-dom';
 import { resetErrorMessage } from '../actions';
 import { loadCurrentUser } from './user/actions';
 import { Button } from 'react-bootstrap';
 import Header from './components/header';
+import SideBar from './components/sidebar';
+import InsightsPage from "./insights";
 
 class App extends Component {
   static propTypes = {
@@ -59,15 +62,22 @@ class App extends Component {
     const { children, inputValue } = this.props;
     const { firstName, lastName } = this.props.currentUser;
     return (
-      <div className={"wrapper"}>
+      <div>
         <Header username={`${firstName} ${lastName}`}/>
-        <div className="sidebar-wrapper"></div>
-        <div className="content-wrapper">
-          <Explore value={inputValue} onChange={this.handleChange} />
-          <hr />
-          {this.renderErrorMessage()}
-          {children}
+        <SideBar/>
+        <div className="content-wrapper" style={{minHeight: '400px'}}>
+          <section className="content-header" ></section>
+          <section className="content" >
+            {/*<Explore value={inputValue} onChange={this.handleChange} />*/}
+            <Route path="/insights/:mode" component={InsightsPage} />
+            <hr />
+            {this.renderErrorMessage()}
+            {children}
+          </section>
         </div>
+        <footer className="main-footer">
+          <strong>Copyright © 2017 <a href="https://pipl.com">Pipl</a>.</strong> All rights reserved.
+        </footer>
       </div>
     );
   }
