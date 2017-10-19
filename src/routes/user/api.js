@@ -14,9 +14,9 @@ import { schema } from 'normalizr';
 // leading to a frozen UI as it wouldn't find "someuser" in the entities.
 // That's why we're forcing lower cases down there.
 
-const currentUserSchema = new schema.Entity('currentUser', {}, {
+const currentUserSchema = new schema.Entity('users', {}, {
   idAttribute: 'username'
 });
 
 // api services
-export const fetchUser = () => callApi(`current_user/`, currentUserSchema);
+export const fetchUser = () => callApi(`current_user/`);
