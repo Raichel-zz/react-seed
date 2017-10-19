@@ -15,7 +15,7 @@ import zip from 'lodash/zip';
 class InsightsPage extends Component {
   static propTypes = {
     mode: PropTypes.string.isRequired,
-    insights: PropTypes.array,
+    insights: PropTypes.object,
     loadInsights: PropTypes.func.isRequired
   };
 
@@ -33,7 +33,6 @@ class InsightsPage extends Component {
   };
 
   render() {
-    debugger;
     let { insights } = this.props;
     const period_length = 1;
     if (!insights) {
