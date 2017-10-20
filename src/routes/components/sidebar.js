@@ -12,19 +12,19 @@ export default class Header extends Component {
       <section className='sidebar'>
 
         {/* Sidebar Menu */}
-        <ul className='sidebar-menu' data-widget='tree'>
+        <ul className='sidebar-menu'>
           <li className='header'>HEADER</li>
           {/* Optionally, you can add icons to the links */}
           <Route exact path='/customers' children={(props) => {
-            return (<li className={props.match ? 'active' : ''}><NavLink activeClassName='active' to={'/customers'}><i
+            return (<li className={props.match ? 'active' : ''}><NavLink to={'/customers'}><i
                 className='fa fa-link'></i><span>Customers</span></NavLink></li>);
           }}/>
           <Route exact path='/users' children={(props) => {
-            return (<li className={props.match ? 'active' : ''}><NavLink activeClassName='active' to={'/users'}><i
+            return (<li className={props.match ? 'active' : ''}><NavLink to={'/users'}><i
                 className='fa fa-link'></i><span>Users</span></NavLink></li>);
           }}/>
           <Route path='/insights' children={(props) => {
-            return (<li className={props.match ? 'active' : ''}><NavLink activeClassName='active' to={'/insights/top'}><i
+            return (<li className={'treeview ' + (props.match ? 'active' : '')}><NavLink to={'#'}><i
                 className='fa fa-link'></i>
               <span>Insights</span>
               <span className='pull-right-container'>
