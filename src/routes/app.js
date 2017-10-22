@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import { resetErrorMessage } from '../actions';
-import { loadCurrentUser } from './user/actions';
+import { loadCurrentUser, logout } from './user/actions';
 import { Button } from 'react-bootstrap';
 import Header from './components/header';
 import SideBar from './components/sidebar';
@@ -20,6 +20,7 @@ class App extends Component {
     resetErrorMessage: PropTypes.func.isRequired,
     inputValue: PropTypes.string.isRequired,
     loadCurrentUser: PropTypes.func.isRequired,
+    logout: PropTypes.func.isRequired,
     // Injected by React Router
     children: PropTypes.node
   };
@@ -66,7 +67,7 @@ class App extends Component {
     const { firstName, lastName } = this.props.currentUser;
     return (
       <div>
-        <Header username={`${firstName} ${lastName}`}/>
+        <Header username={`${firstName} ${lastName}`} logout={this.props.logout}/>
         <SideBar/>
         <div className="content-wrapper" style={{minHeight: '400px'}}>
           <section className="content-header" ></section>
@@ -94,5 +95,6 @@ const mapStateToProps = (state, ownProps) => ({
 
 export default withRouter(connect(mapStateToProps, {
   loadCurrentUser,
+  logout,
   resetErrorMessage
 })(App));

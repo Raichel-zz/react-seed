@@ -1,7 +1,6 @@
 import * as ActionTypes from './actions';
 
-//TODO: seamless-immutable
-// Updates error message to notify about the failed fetches.
+// gets the current logged in user.
 export const currentUser = (state = null, action) => {
   const { type, response } = action;
   if (type === ActionTypes.USER.SUCCESS) {

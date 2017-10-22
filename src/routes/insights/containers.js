@@ -81,9 +81,9 @@ class InsightsPage extends Component {
                 </a>
               </td>
               <td><FormattedNumber value={ insight.total } maximumFractionDigit={0}/></td>
-              <td><FormattedNumber value={ insight.revenue } currency={'USD'} style={'currency'} maximumFractionDigit={0}/></td>
+              <td><FormattedNumber value={ insight.revenue } currency={'USD'} style={'currency'}/></td>
               {/*{% if period_length == 1 %}*/}
-              <td><FormattedNumber value={ insight.revenue7Day } currency={'USD'} style={'currency'} maximumFractionDigit={0}/></td>
+              <td><FormattedNumber value={ insight.revenue7Day } currency={'USD'} style={'currency'}/></td>
               {/*{% endif %}*/}
               {/*{% if period_length == 1 %}*/}
               <td>

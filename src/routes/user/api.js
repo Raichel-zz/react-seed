@@ -20,3 +20,4 @@ const currentUserSchema = new schema.Entity('users', {}, {
 
 // api services
 export const fetchUser = () => callApi(`current_user/`);
+export const logout = () => callApi(`logout`);

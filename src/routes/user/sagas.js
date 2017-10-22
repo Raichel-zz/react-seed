@@ -8,6 +8,12 @@ const { user } = actions;
 
 /***************************** Subroutines ************************************/
 
+// logout
+function* logout() {
+  const {response, error} = yield call(api.logout);
+  window.location = `/`;
+}
+
 // load user unless it is cached
 function* loadCurrentUser() {
   yield put(user.request());
@@ -30,8 +36,17 @@ function* watchLoadCurrentUser() {
   }
 }
 
+// Logout
+function* watchLogout() {
+  while(true) {
+    yield take(actions.LOGOUT);
+    yield fork(logout);
+  }
+}
+
 export default function* userSagas() {
   yield all([
-    fork(watchLoadCurrentUser)
+    fork(watchLoadCurrentUser),
+    fork(watchLogout)
   ]);
 }

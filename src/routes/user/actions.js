@@ -3,6 +3,7 @@ import { action, SUCCESS, REQUEST, FAILURE, createRequestTypes} from '../../acti
 export const USER = createRequestTypes('USER');
 
 export const LOAD_CURRENT_USER = 'LOAD_CURRENT_USER';
+export const LOGOUT = 'LOGOUT';
 
 export const user = {
   request: () => action(USER[REQUEST]),
@@ -11,3 +12,4 @@ export const user = {
 };
 
 export const loadCurrentUser = () => action(LOAD_CURRENT_USER);
+export const logout = () => action(LOGOUT);

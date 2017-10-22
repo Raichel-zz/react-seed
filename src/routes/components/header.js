@@ -4,7 +4,13 @@ import PropTypes from 'prop-types';
 export default class Header extends Component {
 
   static propTypes = {
-    username: PropTypes.string
+    username: PropTypes.string,
+    logout: PropTypes.func.isRequired
+  };
+
+  logout = e => {
+    this.props.logout();
+    e.preventDefault();
   };
 
   render() {
@@ -168,7 +174,8 @@ export default class Header extends Component {
                     <a href="#" className={"btn btn-default btn-flat"}>Profile</a>
                   </div>
                   <div className={"pull-right"}>
-                    <a href="#" className={"btn btn-default btn-flat"}>Sign out</a>
+                    <a href="#" className={"btn btn-default btn-flat"}
+                      onClick={this.logout}>Sign out</a>
                   </div>
                 </li>
               </ul>
