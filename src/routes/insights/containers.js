@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { loadInsights } from './actions';
-import { FormattedNumber } from 'react-intl';
+import { FormattedNumber, FormattedMessage } from 'react-intl';
 import Repo from '../components/repo';
 
 
@@ -44,8 +44,14 @@ class InsightsPage extends Component {
         <thead>
         <tr>
           <th>Org ID <span data-toggle='tooltip' title='Organization ID in accounts system.' className='glyphicon glyphicon-question-sign'></span></th>
-          <th>Organization Name</th>
-          <th>Lookups <span data-toggle='tooltip' title='Total API queries in time period.' className='glyphicon glyphicon-question-sign'></span></th>
+          <th><FormattedMessage
+              id="insights.orgName"
+              defaultMessage="Organization Name"
+          /></th>
+          <th><FormattedMessage
+              id="insights.lookups"
+              defaultMessage="Lookups"
+          /><span data-toggle='tooltip' title='Total API queries in time period.' className='glyphicon glyphicon-question-sign'></span></th>
           <th>Gross Revenue <span data-toggle='tooltip' title='Gross revenue from customer, before discounts.' className='glyphicon glyphicon-question-sign'></span></th>
           {/*{% if period_length == 1 %}*/}
           <th>7 Day Gross Revenue <span data-toggle='tooltip' title='Gross revenue from customer, in the period itself + 7 previous days.' className='glyphicon glyphicon-question-sign'></span></th>

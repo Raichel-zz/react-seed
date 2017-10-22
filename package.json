@@ -35,6 +35,7 @@
     "babel-eslint": "7.2.3",
     "babel-jest": "20.0.3",
     "babel-loader": "7.1.1",
+    "babel-plugin-react-intl": "^2.3.1",
     "babel-polyfill": "^6.26.0",
     "babel-preset-react-app": "^3.0.2",
     "babel-runtime": "6.26.0",
@@ -131,7 +132,10 @@
       "es2015"
     ],
     "plugins": [
-      "transform-class-properties"
+      "transform-class-properties",
+      ["react-intl", {
+        "messagesDir": "./build/messages/"
+      }]
     ]
   }
 }

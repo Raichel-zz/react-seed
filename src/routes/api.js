@@ -4,8 +4,6 @@ import * as constants from '../constants';
 import Cookie from 'js-cookie';
 import 'isomorphic-fetch';
 
-
-
 const setCSRFToken = (req) => {
   if (req.method === 'GET') {
     return req;
