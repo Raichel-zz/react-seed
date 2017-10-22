@@ -5,10 +5,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { loadInsights } from './actions';
-import User from '../components/user';
+import { FormattedNumber } from 'react-intl';
 import Repo from '../components/repo';
-import List from '../components/list';
-import zip from 'lodash/zip';
 
 
 //TODO: Add pipes to format numbers
@@ -40,6 +38,7 @@ class InsightsPage extends Component {
     }
     insights = Object.keys(this.props.insights).map(id => this.props.insights[id]);
     return (
+
     <div className='table-responsive'>
       <table className='table table-striped'>
         <thead>
@@ -75,10 +74,10 @@ class InsightsPage extends Component {
                   <img alt='Show Queries' src={'/pipl_bi/assets/img/mag.gif'} />
                 </a>
               </td>
-              <td>{ insight.total }</td>
-              <td>{ insight.revenue }</td>
+              <td><FormattedNumber value={ insight.total } maximumFractionDigit={0}/></td>
+              <td><FormattedNumber value={ insight.revenue } currency={'USD'} style={'currency'} maximumFractionDigit={0}/></td>
               {/*{% if period_length == 1 %}*/}
-              <td>{ insight.revenue7Day }</td>
+              <td><FormattedNumber value={ insight.revenue7Day } currency={'USD'} style={'currency'} maximumFractionDigit={0}/></td>
               {/*{% endif %}*/}
               {/*{% if period_length == 1 %}*/}
               <td>
