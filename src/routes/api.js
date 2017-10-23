@@ -39,13 +39,13 @@ export const callApi = (endpoint, schema) => {
       if (!response.ok) {
         return Promise.reject(json);
       }
-      const camelizedJson = camelizeKeys(json);
+      // const camelizedJson = camelizeKeys(json);
       if(schema) {
         return Object.assign({},
-            normalize(camelizedJson, schema)
+            normalize(json, schema)
         );
       } else {
-        return Object.assign({}, camelizedJson);
+        return Object.assign({}, json);
       }
     })
     .then(

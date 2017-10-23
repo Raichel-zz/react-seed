@@ -64,10 +64,10 @@ class App extends Component {
       return (<div/>);
     }
     const { children, inputValue } = this.props;
-    const { firstName, lastName } = this.props.currentUser;
+    const { first_name, last_name } = this.props.currentUser;
     return (
       <div>
-        <Header username={`${firstName} ${lastName}`} logout={this.props.logout}/>
+        <Header username={`${first_name} ${last_name}`} logout={this.props.logout}/>
         <SideBar/>
         <div className="content-wrapper" style={{minHeight: '400px'}}>
           {/*<Explore value={inputValue} onChange={this.handleChange} />*/}
