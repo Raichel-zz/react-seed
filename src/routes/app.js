@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import { resetErrorMessage } from '../actions';
 import { loadCurrentUser, logout } from './user/actions';
 import { Button } from 'react-bootstrap';
@@ -70,14 +70,12 @@ class App extends Component {
         <Header username={`${firstName} ${lastName}`} logout={this.props.logout}/>
         <SideBar/>
         <div className="content-wrapper" style={{minHeight: '400px'}}>
-          <section className="content-header" ></section>
-          <section className="content" >
-            {/*<Explore value={inputValue} onChange={this.handleChange} />*/}
-            <Route path="/insights/:mode" component={InsightsPage} />
-            <hr />
-            {this.renderErrorMessage()}
-            {children}
-          </section>
+          {/*<Explore value={inputValue} onChange={this.handleChange} />*/}
+          <Redirect from="/" exact to="/insights/top" />
+          <Route path="/insights/:mode" component={InsightsPage} />
+          <hr />
+          {this.renderErrorMessage()}
+          {children}
         </div>
         <footer className="main-footer">
           <strong>Copyright © 2017 <a href="https://pipl.com">Pipl</a>.</strong> All rights reserved.

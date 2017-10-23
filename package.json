@@ -61,6 +61,7 @@
     "jest-cli": "^20.0.4",
     "js-cookie": "^2.1.4",
     "lodash": "^4.16.1",
+    "moment": "^2.19.1",
     "normalizr": "^3.2.3",
     "object-assign": "4.1.1",
     "postcss-flexbugs-fixes": "3.2.0",
@@ -69,6 +70,7 @@
     "prop-types": "^15.5.10",
     "react": "^15.5.0",
     "react-bootstrap": "^0.31.3",
+    "react-bootstrap-daterangepicker": "^3.4.1",
     "react-dev-utils": "^4.0.1",
     "react-dom": "^15.5.0",
     "react-intl": "^2.4.0",
@@ -133,9 +135,12 @@
     ],
     "plugins": [
       "transform-class-properties",
-      ["react-intl", {
-        "messagesDir": "./build/messages/"
-      }]
+      [
+        "react-intl",
+        {
+          "messagesDir": "./build/messages/"
+        }
+      ]
     ]
   }
 }

@@ -32,6 +32,7 @@ export const callApi = (endpoint, schema) => {
             window.location = `${constants.API_ROOT}login/pipl/?next=/`;
           } else {
             return response.json().then(json => ({json, response}));
+
           }
         }
     ).then(({ json, response }) => {

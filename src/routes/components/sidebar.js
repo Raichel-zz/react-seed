@@ -15,14 +15,14 @@ export default class Header extends Component {
         <ul className='sidebar-menu'>
           <li className='header'>HEADER</li>
           {/* Optionally, you can add icons to the links */}
-          <Route exact path='/customers' children={(props) => {
-            return (<li className={props.match ? 'active' : ''}><NavLink to={'/customers'}><i
-                className='fa fa-link'></i><span>Customers</span></NavLink></li>);
-          }}/>
-          <Route exact path='/users' children={(props) => {
-            return (<li className={props.match ? 'active' : ''}><NavLink to={'/users'}><i
-                className='fa fa-link'></i><span>Users</span></NavLink></li>);
-          }}/>
+          {/*<Route exact path='/customers' children={(props) => {*/}
+            {/*return (<li className={props.match ? 'active' : ''}><NavLink to={'/customers'}><i*/}
+                {/*className='fa fa-link'></i><span>Customers</span></NavLink></li>);*/}
+          {/*}}/>*/}
+          {/*<Route exact path='/users' children={(props) => {*/}
+            {/*return (<li className={props.match ? 'active' : ''}><NavLink to={'/users'}><i*/}
+                {/*className='fa fa-link'></i><span>Users</span></NavLink></li>);*/}
+          {/*}}/>*/}
           <Route path='/insights' children={(props) => {
             return (<li className={'treeview ' + (props.match ? 'active' : '')}><NavLink to={'#'}><i
                 className='fa fa-link'></i>
