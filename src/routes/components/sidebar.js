@@ -35,8 +35,8 @@ export default class Header extends Component {
                 <Route exact path='/insights/top' children={(props) => {
                   return (<li className={props.match ? 'active' : ''}><NavLink to={'/insights/top'} >Top</NavLink></li>);
                 }}/>
-                <Route exact path='/insights/my-customers' children={(props) => {
-                  return (<li className={props.match ? 'active' : ''}><NavLink to={'/insights/my-customers'} >My Customers</NavLink></li>);
+                <Route exact path='/insights/mine' children={(props) => {
+                  return (<li className={props.match ? 'active' : ''}><NavLink to={'/insights/mine'} >My Customers</NavLink></li>);
                 }}/>
               </ul>
             </li>);

@@ -18,4 +18,4 @@ const insightSchema = new schema.Entity('insights');
 const insightsSchemaArray = [insightSchema];
 
 // api services
-export const fetchInsights = (mode) => callApi(`insights/${mode}`, insightsSchemaArray);
+export const fetchInsights = (mode, startDate, endDate) => callApi(`insights/${mode}/?start_date=${startDate}&end_date=${endDate}`, insightsSchemaArray);

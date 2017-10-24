@@ -7,11 +7,10 @@ import { withRouter } from 'react-router-dom';
 import { Button, Row, Col } from 'react-bootstrap';
 import { loadInsights } from './actions';
 import { FormattedNumber, FormattedMessage } from 'react-intl';
-import Repo from '../components/repo';
 import PercentChange from '../components/percentChange';
 import moment from 'moment';
 import DateRangePicker from 'react-bootstrap-daterangepicker';
-import List from "../components/list";
+import mag from 'assets/img/mag.gif';
 
 class InsightsPage extends Component {
   static propTypes = {
@@ -20,9 +19,9 @@ class InsightsPage extends Component {
     loadInsights: PropTypes.func.isRequired
   };
 
-  componentWillMount() {
-    this.props.loadInsights(this.props.mode);
-    this.setState({
+  constructor() {
+    super();
+    this.state = {
       ranges: {
         'Today': [moment(), moment()],
             'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
@@ -34,34 +33,27 @@ class InsightsPage extends Component {
       period_length: 1,
       startDate: moment().subtract(1, 'days'),
       endDate: moment()
-    });
+    };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.mode != nextProps.mode) {
+      this.props.loadInsights(nextProps.mode, this.state.startDate, this.state.endDate);
+    }
   }
 
   componentDidMount() {
+    this.props.loadInsights(this.props.mode, this.state.startDate, this.state.endDate);
     $('[data-toggle="tooltip"]').tooltip();
   }
 
-  handleEvent = (event, picker) => {
+  onDateRangeChanged = (event, picker) => {
     this.setState({
       startDate: picker.startDate,
       endDate: picker.endDate,
       period_length: Math.abs(picker.startDate.diff(picker.endDate, 'days'))
     });
-  };
-
-  renderCountByStatus = (item) => {
-    return (<div><span><strong>{ item.key }</strong>: { item.val }</span><br/></div>);
-  };
-
-  renderSubscriptions = (items) => {
-    debugger;
-    // {insight.countBySubscription.items.map(({apiVersion, dataBySubscription}, idx) => (
-    //     dataBySubscription.items.map(({subscription, value}, idx) => (
-    //         <div><span>
-    //
-    //                             </span><br/></div>))
-    // ))}
-
+    this.props.loadInsights(this.props.mode, this.state.startDate, this.state.endDate);
   };
 
   render() {
@@ -85,7 +77,7 @@ class InsightsPage extends Component {
                       id='insights.daterangeLabel'
                       defaultMessage='Date range'
                   /></label>
-                  <DateRangePicker startDate={this.state.startDate} endDate={this.state.endDate} ranges={this.state.ranges} onEvent={this.handleEvent}>
+                  <DateRangePicker startDate={this.state.startDate} endDate={this.state.endDate} ranges={this.state.ranges} onApply={this.onDateRangeChanged}>
                     <Button className='selected-date-range-btn' style={{width:'100%'}}>
                       <div className='pull-left'><i className={'fa fa-calendar'}></i></div>
                       <FormattedMessage
@@ -217,12 +209,15 @@ class InsightsPage extends Component {
                           {Object.keys(insight.count_by_subscription).map((api_version) => (
                             Object.keys(insight.count_by_subscription[api_version]).map((subscription) => (
                                 <span key={subscription}>
-                                  <a data-toggle="tooltip" target="_blank" href={`/pipl_bi/proxy/dashboard/db/api-bi/?var-OrganizationID=${insight.id}&amp;from=20171003T000000&amp;to=20171026T000000&amp;var-DeveloperClass=${subscription}`} data-original-title={`Show usage graphs for ${subscription}`}>
+                                  <a data-toggle="tooltip" target="_blank"
+                                     href={`/pipl_bi/proxy/dashboard/db/api-bi/?var-OrganizationID=${insight.id}&from=${this.state.startDate.format('YYYYMMDDT000000')}&to=${this.state.endDate.format('YYYYMMDDT000000')}&var-DeveloperClass=${subscription}`}
+                                     data-original-title={`Show usage graphs for ${subscription}`}>
                                     <strong>{subscription}</strong>: {insight.count_by_subscription[api_version][subscription]}
                                   </a>
-                                  <a data-toggle="tooltip" href={`/pipl_bi/debugger/${insight.id}/API_V${api_version}/`} data-original-title={`Analyze ${subscription} queries`}>
-                                      <img alt="Show Queries" src='/pipl_bi/assets/img/mag.gif'/>
+                                  <a data-toggle="tooltip" href={`/pipl_bi/debugger/${insight.id}/API_V${api_version}/`} data-original-title={`Analyze ${subscription} queries`} style={{marginLeft: '5px'}}>
+                                      <img alt="Show Queries" src={mag}/>
                                   </a>
+                                  <br/>
                                 </span>
                             ))
                           ))}

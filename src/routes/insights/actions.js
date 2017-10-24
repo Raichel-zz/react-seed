@@ -10,6 +10,6 @@ export const insights = {
   failure: (error) => action(INSIGHTS[FAILURE], {error}),
 };
 
-export const loadInsights = mode => action(LOAD_INSIGHTS, {mode});
+export const loadInsights = (mode, startDate, endDate) => action(LOAD_INSIGHTS, {mode, startDate, endDate});
 
 
